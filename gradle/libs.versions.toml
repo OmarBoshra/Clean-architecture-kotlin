@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.4.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -17,6 +17,7 @@ hiltAndroid = "2.51.1"
 glide = "5.0.0-rc01"
 epoxy = "5.1.4"
 epoxyProcessor = "5.1.4"
+epoxyPaging3 = "5.1.4"
 converterGson = "2.11.0"
 lifecycleExtensions = "2.2.0"
 lifecycleProcess = "2.8.2"
@@ -24,6 +25,28 @@ lifecycleService = "2.8.2"
 lifecycleViewmodelSavedstate = "2.8.2"
 lifecycleViewmodelKtx = "2.8.2"
 lifecycleCompiler = "2.8.2"
+playServicesBasement = "18.4.0"
+retrofit2KotlinxSerializationConverter = "1.0.0"
+kotlinxSerializationJson = "1.7.0"
+kotlinx-serialization = "2.0.0"
+navigationFragmentKtx = "2.7.7"
+navigationUiKtx = "2.7.7"
+navigationDynamicFeaturesFragment = "2.7.7"
+nav = "2.6.0"
+legacySupportV4 = "1.0.0"
+lifecycleLivedataKtx = "2.8.2"
+fragmentKtx = "1.8.0"
+viewbinding = "8.5.0"
+databindingCompilerCommon = "8.5.0"
+kotlinPlugin = "1.8.10"
+circleimageview = "3.1.0"
+desugar_jdk_libs = "2.0.4"
+org-jetbrains-kotlin-android = "1.8.0"
+comGoogleDaggerHiltAndroidGradlePlugin = "2.51.1"
+hilt = "2.51.1"
+okhttp = "5.0.0-alpha.14"
+navigationSafeArgsGradlePlugin = "2.7.7"
+navigationDynamicFeaturesFragmentVersion = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +65,7 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 epoxy = { group = "com.airbnb.android", name = "epoxy", version.ref = "epoxy" }
 epoxy-processor = { group = "com.airbnb.android", name = "epoxy-processor", version.ref = "epoxyProcessor" }
+epoxy-paging3 = { group = "com.airbnb.android", name = "epoxy-paging3", version.ref = "epoxyPaging3" }
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
 androidx-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycleExtensions" }
 androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleProcess" }
@@ -49,8 +73,29 @@ androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-s
 androidx-lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycleViewmodelSavedstate" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleCompiler" }
+play-services-basement = { group = "com.google.android.gms", name = "play-services-basement", version.ref = "playServicesBasement" }
+retrofit2-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-navigation-dynamic-features-fragment = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigationDynamicFeaturesFragment" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
+androidx-databinding-compiler-common = { group = "androidx.databinding", name = "databinding-compiler-common", version.ref = "databindingCompilerCommon" }
+circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }
+desugar_jdk_libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
+com-google-dagger-hilt-android-gradle-plugin = { group = "com.google.dagger.hilt.android", name = "com.google.dagger.hilt.android.gradle.plugin", version.ref = "comGoogleDaggerHiltAndroidGradlePlugin" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+androidx-navigation-safe-args-gradle-plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
+navigation-dynamic-features-fragment = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigationDynamicFeaturesFragmentVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinPlugin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "org-jetbrains-kotlin-android" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "nav" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization" }
