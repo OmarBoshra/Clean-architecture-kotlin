@@ -6,7 +6,7 @@ import com.example.dinnerapp.network.domains.MealCategory
 import com.example.dinnerapp.network.usecases.GetMealCategoriesUsecase
 import com.example.dinnerapp.network.utils.Result
 import com.example.dinnerapp.presentation.epoxy.events.componentevents.MealCategoriesComponentEvents
-import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.ComponentEventListener
+import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MealCategoriesComponentEventListener
 import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MealCategoriesFragmentEventListener
 import com.example.dinnerapp.presentation.epoxy.events.fragmentevents.MealCategoriesFragmentEvents
 import com.example.dinnerapp.presentation.utils.ItemState.ItemNotSelected
@@ -25,16 +25,16 @@ class MealCategoriesViewModel
     @Inject
     constructor(
         private val getMealCategoriesUsecase: GetMealCategoriesUsecase,
-    ) : ViewModel(), MealCategoriesFragmentEventListener, ComponentEventListener {
+    ) : ViewModel(), MealCategoriesFragmentEventListener, MealCategoriesComponentEventListener {
         private val _navigationEvents = MutableSharedFlow<NavigationEvents?>()
         val navigationEvents = _navigationEvents.asSharedFlow()
 
         private val _mealListSuccess =
-            MutableStateFlow<Loaded<List<ItemNotSelected<MealCategory?>?>?>?>(null)
-        val mealListSuccessFlow = _mealListSuccess.asStateFlow()
+            MutableSharedFlow<Loaded<List<ItemNotSelected<MealCategory?>?>?>?>()
+        val mealListSuccessFlow = _mealListSuccess.asSharedFlow()
 
-        private val _mealListError = MutableStateFlow<String?>(null)
-        val mealListErrorFlow = _mealListError.asStateFlow()
+        private val _mealListError = MutableSharedFlow<String?>()
+        val mealListErrorFlow = _mealListError.asSharedFlow()
 
         /**
          * Fragment events.
@@ -84,8 +84,8 @@ class MealCategoriesViewModel
 
         // region API calls
         private suspend fun getMealCategories() {
-            val moviesResult = getMealCategoriesUsecase.invoke()
-            sendMealCategoriesResult(moviesResult)
+            val mealCategoriesResult = getMealCategoriesUsecase.invoke()
+            sendMealCategoriesResult(mealCategoriesResult)
         }
 
         private suspend fun sendMealCategoriesResult(result: Result<List<MealCategory?>?>) {

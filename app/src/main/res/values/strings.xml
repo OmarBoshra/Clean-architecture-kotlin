@@ -2,7 +2,6 @@
     <string name="app_name">DinnerApp</string>
     <string name="fragment_meals_category">fragment_meals_category</string>
 
-
     <!-- MealCategoriesListItem-->
     <dimen name="list_meal_categories_item_height">72dp</dimen>
     <dimen name="list_meal_categories_item_primary_text_size">16sp</dimen>
