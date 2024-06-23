@@ -1,6 +1,6 @@
 package com.example.dinnerapp.network.api
 
-import com.example.dinnerapp.network.models.MealCategoriesResponse
+import com.example.dinnerapp.data.models.MealCategoriesResponse
 import com.example.dinnerapp.utils.Constants
 import retrofit2.Response
 import retrofit2.http.GET

@@ -1,7 +1,7 @@
-package com.example.dinnerapp.network.usecases
+package com.example.dinnerapp.domains.usecases
 
-import com.example.dinnerapp.network.domains.MealCategory
-import com.example.dinnerapp.network.repositories.MealCategoriesRepository
+import com.example.dinnerapp.domains.models.MealCategory
+import com.example.dinnerapp.data.repositories.MealCategoriesRepository
 import com.example.dinnerapp.network.utils.Result
 import javax.inject.Inject
 

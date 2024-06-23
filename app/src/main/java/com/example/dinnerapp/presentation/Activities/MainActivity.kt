@@ -5,9 +5,9 @@ import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.dinnerapp.R
 import com.example.dinnerapp.databinding.ActivityMainBinding
-import com.example.dinnerapp.presentation.epoxy.events.activityevents.MainActivityEvents
+import com.example.dinnerapp.presentation.events.activityevents.MainActivityEvents
 import com.example.dinnerapp.presentation.utils.NavigationEvents
-import com.example.dinnerapp.presentation.viewmodels.MainActivityViewModel
+import com.example.dinnerapp.utils.BaseActivity
 import com.example.dinnerapp.utils.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,13 +22,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun setup() {
         launchAndRepeatWithViewLifecycle {
             launch { observeNavigationEvents() }
-            launch { onActivityCreate() }
+            launch { toMealCategories() }
         }
     }
 
     // region activity events .
-    private fun onActivityCreate() {
-        viewModel.onEvent(MainActivityEvents.OnActivityCreate(NavigationEvents.ToMealCategories))
+    private fun toMealCategories() {
+        viewModel.onEvent(MainActivityEvents.ToMealCategories(NavigationEvents.ToMealCategories))
     }
 
     //endregion

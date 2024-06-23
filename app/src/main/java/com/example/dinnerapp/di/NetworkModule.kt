@@ -1,8 +1,8 @@
 package com.example.dinnerapp.di
 
 import com.example.dinnerapp.network.api.MealApi
-import com.example.dinnerapp.network.repositories.MealCategoriesRepository
-import com.example.dinnerapp.network.usecases.GetMealCategoriesUsecase
+import com.example.dinnerapp.data.repositories.MealCategoriesRepository
+import com.example.dinnerapp.domains.usecases.GetMealCategoriesUsecase
 import com.example.dinnerapp.utils.Constants
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module

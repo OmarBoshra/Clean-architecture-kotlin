@@ -1,4 +1,4 @@
-package com.example.dinnerapp.network.models
+package com.example.dinnerapp.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

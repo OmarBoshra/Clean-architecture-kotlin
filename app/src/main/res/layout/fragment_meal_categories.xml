@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFontPrimary"
-    tools:context=".presentation.fragments.MealCategoriesFragment">
+    tools:context=".presentation.meal_categories.MealCategoriesFragment">
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxy_rv"

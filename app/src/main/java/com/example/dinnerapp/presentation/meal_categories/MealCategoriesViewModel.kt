@@ -1,22 +1,20 @@
-package com.example.dinnerapp.presentation.viewmodels
+package com.example.dinnerapp.presentation.meal_categories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dinnerapp.network.domains.MealCategory
-import com.example.dinnerapp.network.usecases.GetMealCategoriesUsecase
+import com.example.dinnerapp.domains.models.MealCategory
+import com.example.dinnerapp.domains.usecases.GetMealCategoriesUsecase
 import com.example.dinnerapp.network.utils.Result
-import com.example.dinnerapp.presentation.epoxy.events.componentevents.MealCategoriesComponentEvents
-import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MealCategoriesComponentEventListener
-import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MealCategoriesFragmentEventListener
-import com.example.dinnerapp.presentation.epoxy.events.fragmentevents.MealCategoriesFragmentEvents
+import com.example.dinnerapp.presentation.events.componentevents.MealCategoriesComponentEvents
+import com.example.dinnerapp.presentation.events.eventlisteners.MealCategoriesComponentEventListener
+import com.example.dinnerapp.presentation.events.eventlisteners.MealCategoriesFragmentEventListener
+import com.example.dinnerapp.presentation.events.fragmentevents.MealCategoriesFragmentEvents
 import com.example.dinnerapp.presentation.utils.ItemState.ItemNotSelected
 import com.example.dinnerapp.presentation.utils.ListState.Loaded
 import com.example.dinnerapp.presentation.utils.NavigationEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,19 +37,40 @@ class MealCategoriesViewModel
         /**
          * Fragment events.
          */
-        override fun onEvent(event: MealCategoriesFragmentEvents) =
-            viewModelScope.launch {
-                when (event) {
-                    is MealCategoriesFragmentEvents.OnFragmentCreate -> {
-                        fragmentEventsHandler(event)
-                    }
-                }
-            }
+        override fun onEvent(event: MealCategoriesFragmentEvents) {
+            fragmentEventsHandler(event)
+        }
 
         /**
          * Component events.
          */
-        override fun onEvent(event: MealCategoriesComponentEvents) =
+        override fun onEvent(event: MealCategoriesComponentEvents) {
+            componentEventsHandler(event)
+        }
+
+        // region event handlers
+        private fun navigationEventsHandler(event: NavigationEvents) =
+            viewModelScope.launch {
+                when (event) {
+                    is NavigationEvents.ToDrinkCategories -> {
+                        _navigationEvents.emit(NavigationEvents.ToDrinkCategories)
+                    }
+
+                    NavigationEvents.ToDinner -> TODO()
+                    NavigationEvents.ToMealCategories -> TODO()
+                }
+            }
+
+        private fun fragmentEventsHandler(event: MealCategoriesFragmentEvents) =
+            viewModelScope.launch {
+                when (event) {
+                    is MealCategoriesFragmentEvents.GetMealCategories -> {
+                        getMealCategories()
+                    }
+                }
+            }
+
+        private fun componentEventsHandler(event: MealCategoriesComponentEvents) =
             viewModelScope.launch {
                 when (event) {
                     is MealCategoriesComponentEvents.OnClickMealCategory -> {
@@ -59,26 +78,6 @@ class MealCategoriesViewModel
                     }
                 }
             }
-
-        // region event handlers
-        private suspend fun navigationEventsHandler(event: NavigationEvents) {
-            when (event) {
-                is NavigationEvents.ToDrinkCategories -> {
-                    _navigationEvents.emit(NavigationEvents.ToDrinkCategories)
-                }
-
-                NavigationEvents.ToDinner -> TODO()
-                NavigationEvents.ToMealCategories -> TODO()
-            }
-        }
-
-        private suspend fun fragmentEventsHandler(event: MealCategoriesFragmentEvents) {
-            when (event) {
-                is MealCategoriesFragmentEvents.OnFragmentCreate -> {
-                    getMealCategories()
-                }
-            }
-        }
 
         //endregion
 

@@ -1,4 +1,4 @@
-package com.example.dinnerapp.network.domains
+package com.example.dinnerapp.domains.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -1,4 +1,4 @@
-package com.example.dinnerapp.presentation.epoxy.events.componentevents
+package com.example.dinnerapp.presentation.events.componentevents
 
 import com.example.dinnerapp.presentation.utils.NavigationEvents
 

@@ -1,4 +1,4 @@
-package com.example.dinnerapp.presentation.Activities
+package com.example.dinnerapp.utils
 
 import android.os.Bundle
 import android.view.LayoutInflater

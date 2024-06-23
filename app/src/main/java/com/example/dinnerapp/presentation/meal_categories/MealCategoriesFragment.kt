@@ -1,4 +1,4 @@
-package com.example.dinnerapp.presentation.fragments
+package com.example.dinnerapp.presentation.meal_categories
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.dinnerapp.databinding.FragmentMealCategoriesBinding
 import com.example.dinnerapp.presentation.epoxy.controllers.MealCategoriesEpoxyController
-import com.example.dinnerapp.presentation.epoxy.events.fragmentevents.MealCategoriesFragmentEvents
+import com.example.dinnerapp.presentation.events.fragmentevents.MealCategoriesFragmentEvents
+import com.example.dinnerapp.utils.BaseFragment
 import com.example.dinnerapp.presentation.utils.ListState
-import com.example.dinnerapp.presentation.viewmodels.MealCategoriesViewModel
 import com.example.dinnerapp.utils.Constants
 import com.example.dinnerapp.utils.launchAndRepeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +37,7 @@ class MealCategoriesFragment : BaseFragment<FragmentMealCategoriesBinding>() {
             launch { observeMealCategoriesOnFailure() }
             launch { observeNavigationEvents() }
             launch { initializeUI() }
-            launch { onFragmentStart() }
+            launch { getMealCategories() }
         }
     }
 
@@ -68,8 +68,8 @@ class MealCategoriesFragment : BaseFragment<FragmentMealCategoriesBinding>() {
         controller.setLoadingState(ListState.Loading(Constants.StateConstants.LOADING))
     }
 
-    private fun onFragmentStart() {
-        viewModel.onEvent(MealCategoriesFragmentEvents.OnFragmentCreate)
+    private fun getMealCategories() {
+        viewModel.onEvent(MealCategoriesFragmentEvents.GetMealCategories)
     }
 
     //endregion

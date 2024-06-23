@@ -1,9 +1,9 @@
-package com.example.dinnerapp.presentation.viewmodels
+package com.example.dinnerapp.presentation.Activities
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dinnerapp.presentation.epoxy.events.activityevents.MainActivityEvents
-import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MainActivityEventListener
+import com.example.dinnerapp.presentation.events.activityevents.MainActivityEvents
+import com.example.dinnerapp.presentation.events.eventlisteners.MainActivityEventListener
 import com.example.dinnerapp.presentation.utils.NavigationEvents
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -19,7 +19,7 @@ class MainActivityViewModel : ViewModel(), MainActivityEventListener {
     override fun onEvent(event: MainActivityEvents) =
         viewModelScope.launch {
             when (event) {
-                is MainActivityEvents.OnActivityCreate -> {
+                is MainActivityEvents.ToMealCategories -> {
                     navigationEventHandler(event.navigationEvent)
                 }
             }

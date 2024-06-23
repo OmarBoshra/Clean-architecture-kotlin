@@ -1,11 +1,11 @@
 package com.example.dinnerapp.presentation.epoxy.controllers
 
 import com.airbnb.epoxy.TypedEpoxyController
-import com.example.dinnerapp.network.domains.MealCategory
+import com.example.dinnerapp.domains.models.MealCategory
 import com.example.dinnerapp.presentation.epoxy.components.error
 import com.example.dinnerapp.presentation.epoxy.components.loading
 import com.example.dinnerapp.presentation.epoxy.components.mealCategory
-import com.example.dinnerapp.presentation.epoxy.events.eventlisteners.MealCategoriesComponentEventListener
+import com.example.dinnerapp.presentation.events.eventlisteners.MealCategoriesComponentEventListener
 import com.example.dinnerapp.presentation.utils.ItemState
 import com.example.dinnerapp.presentation.utils.ItemState.ItemNotSelected
 import com.example.dinnerapp.presentation.utils.ListState

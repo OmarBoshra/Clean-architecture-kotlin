@@ -1,7 +1,6 @@
 package com.example.dinnerapp.presentation.epoxy.components
 
 import android.annotation.SuppressLint
-import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,9 +9,9 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.bumptech.glide.Glide
 import com.example.dinnerapp.R
 import com.example.dinnerapp.databinding.MealCategoriesItemBinding
-import com.example.dinnerapp.network.domains.MealCategory
-import com.example.dinnerapp.presentation.epoxy.events.componentevents.MealCategoriesComponentEvents
+import com.example.dinnerapp.domains.models.MealCategory
 import com.example.dinnerapp.presentation.epoxy.utils.BaseEpoxyModelWithViewHolder
+import com.example.dinnerapp.presentation.events.componentevents.MealCategoriesComponentEvents
 import com.example.dinnerapp.presentation.utils.ItemState
 import com.example.dinnerapp.presentation.utils.NavigationEvents
 
@@ -34,6 +33,8 @@ abstract class MealCategoryEpoxyModel :
         )
 
         root.setOnClickListener {
+            // Check/Uncheck the checkbox & navigate to drink categories.
+            cbMealCategoryCheckbox.isChecked = !cbMealCategoryCheckbox.isChecked
             listener?.onEvent(MealCategoriesComponentEvents.OnClickMealCategory(NavigationEvents.ToDrinkCategories))
         }
     }

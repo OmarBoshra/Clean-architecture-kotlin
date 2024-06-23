@@ -1,7 +1,7 @@
 package com.example.dinnerapp.network.mappers
 
-import com.example.dinnerapp.network.domains.MealCategory
-import com.example.dinnerapp.network.models.MealCategoryResponse
+import com.example.dinnerapp.domains.models.MealCategory
+import com.example.dinnerapp.data.models.MealCategoryResponse
 
 object MealCategoryMapper {
     fun mapToDomain(response: MealCategoryResponse): MealCategory {

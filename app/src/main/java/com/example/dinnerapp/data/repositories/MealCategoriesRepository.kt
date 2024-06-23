@@ -1,7 +1,7 @@
-package com.example.dinnerapp.network.repositories
+package com.example.dinnerapp.data.repositories
 
 import com.example.dinnerapp.network.api.MealApi
-import com.example.dinnerapp.network.domains.MealCategory
+import com.example.dinnerapp.domains.models.MealCategory
 import com.example.dinnerapp.network.mappers.MealCategoryMapper
 import com.example.dinnerapp.network.utils.SafeApiRequest
 import javax.inject.Inject
