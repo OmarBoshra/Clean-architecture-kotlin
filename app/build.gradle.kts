@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.navigation.dynamic.features.fragment)
 
+
     // Dependency injection
     // Hilt
     kapt(libs.hilt.compiler)
@@ -86,7 +87,7 @@ dependencies {
     implementation(libs.converter.gson)
 
     // image loading
-    implementation(libs.glide)
+    implementation(libs.coil)
 
     // Epoxy
     implementation(libs.epoxy)

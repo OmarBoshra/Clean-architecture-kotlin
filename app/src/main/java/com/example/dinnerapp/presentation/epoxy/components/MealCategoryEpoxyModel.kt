@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
-import com.bumptech.glide.Glide
 import com.example.dinnerapp.R
 import com.example.dinnerapp.databinding.MealCategoriesItemBinding
 import com.example.dinnerapp.domains.models.MealCategory
@@ -14,6 +13,7 @@ import com.example.dinnerapp.presentation.epoxy.utils.BaseEpoxyModelWithViewHold
 import com.example.dinnerapp.presentation.events.componentevents.MealCategoriesComponentEvents
 import com.example.dinnerapp.presentation.utils.ItemState
 import com.example.dinnerapp.presentation.utils.NavigationEvents
+import com.example.dinnerapp.utils.loadUrl
 
 @SuppressLint("NonConstantResourceId")
 @EpoxyModelClass(layout = R.layout.meal_categories_item)
@@ -28,7 +28,6 @@ abstract class MealCategoryEpoxyModel :
             tvMealCategoryName,
             tvMealCategoryDescription,
             cbMealCategoryCheckbox,
-            root,
             ivMealCategories,
         )
 
@@ -44,7 +43,6 @@ abstract class MealCategoryEpoxyModel :
         tvMealCategoryName: TextView,
         tvMealCategoryDescription: TextView,
         cbMealCategoryCheckbox: CheckBox,
-        root: View,
         ivMealCategories: ImageView,
     ) {
         when (itemState) {
@@ -57,7 +55,7 @@ abstract class MealCategoryEpoxyModel :
 
                 cbMealCategoryCheckbox.isChecked = false
 
-                updateIcon(root, itemState.data?.mealCategoryUrl, ivMealCategories)
+                updateIcon(itemState.data?.mealCategoryUrl, ivMealCategories)
             }
 
             is ItemState.ItemSelected -> {
@@ -69,7 +67,7 @@ abstract class MealCategoryEpoxyModel :
 
                 cbMealCategoryCheckbox.isChecked = true
 
-                updateIcon(root, itemState.data?.mealCategoryUrl, ivMealCategories)
+                updateIcon(itemState.data?.mealCategoryUrl, ivMealCategories)
             }
 
             null -> {}
@@ -77,13 +75,9 @@ abstract class MealCategoryEpoxyModel :
     }
 
     private fun updateIcon(
-        root: View,
         mealCategoryUrl: String?,
         ivMealCategories: ImageView,
     ) {
-        Glide.with(root)
-            .load(mealCategoryUrl)
-            .centerCrop()
-            .into(ivMealCategories)
+        ivMealCategories.loadUrl(mealCategoryUrl)
     }
 }
